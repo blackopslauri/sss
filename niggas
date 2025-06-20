@@ -335,8 +335,8 @@ function espLibrary:AddObjectEsp(object, defaultOptions)
     options.enabled = options.enabled or true;
     options.limitDistance = options.limitDistance or false;
     options.maxDistance = options.maxDistance or false;
-    options.visibleOnly = options.visibleOnly or false;
-    options.color = options.color or color3New(1, 1, 1);
+
+options.color = options.color or color3New(1, 1, 1);
     options.transparency = options.transparency or 1;
     options.text = options.text or object.Name;
     options.font = options.font or 2;
@@ -415,10 +415,6 @@ function espLibrary:Load(renderValue)
                 end
 
                 if (self.options.limitDistance and distance > self.options.maxDistance) then
-                    enabled = false;
-                end
-
-                if (self.options.visibleOnly and not self.visibleCheck(character, torso.Position)) then
                     enabled = false;
                 end
 
@@ -559,7 +555,6 @@ function espLibrary:Load(renderValue)
                 end
 
                 highlight.Enabled = canShow;
-                highlight.DepthMode = self.options.visibleOnly and Enum.HighlightDepthMode.Occluded or Enum.HighlightDepthMode.AlwaysOnTop;
                 highlight.Adornee = character;
                 highlight.FillColor = color or self.options.chamsFillColor;
                 highlight.FillTransparency = self.options.chamsFillTransparency;
