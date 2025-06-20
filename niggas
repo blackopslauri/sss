@@ -4,8 +4,6 @@ local espLibrary = {
     chamsCache = {},
     objectCache = {},
     conns = {},
-    whitelist = {}, -- insert string that is the player's name you want to whitelist (turns esp color to whitelistColor in options)
-    blacklist = {}, -- insert string that is the player's name you want to blacklist (removes player from esp)
     options = {
         enabled = false,
         minScaleFactorX = 1,
@@ -406,14 +404,6 @@ function espLibrary:Load(renderValue)
                     color = self.options.fillColor;
                 end
 
-                if (find(self.whitelist, player.Name)) then
-                    color = self.options.whitelistColor;
-                end
-
-                if (find(self.blacklist, player.Name)) then
-                    enabled = false;
-                end
-
                 if (self.options.limitDistance and distance > self.options.maxDistance) then
                     enabled = false;
                 end
@@ -536,14 +526,6 @@ function espLibrary:Load(renderValue)
 
                 if (self.options.fillColor ~= nil) then
                     color = self.options.fillColor;
-                end
-
-                if (find(self.whitelist, player.Name)) then
-                    color = self.options.whitelistColor;
-                end
-
-                if (find(self.blacklist, player.Name)) then
-                    canShow = false;
                 end
 
                 if (self.options.limitDistance and distance > self.options.maxDistance) then
